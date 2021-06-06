@@ -9,7 +9,7 @@ function showError(){
 
 }
  
- document.getElementById('loading').style.display = 'none'
+document.getElementById('loading').style.display = 'none'
 
 document.getElementById('odd-form').addEventListener('submit', function(e){
 
@@ -32,7 +32,7 @@ function calculateResult(){
     const oddsDenominator = document.getElementById('denominator')
     const returns = document.getElementById('returns')
 
-    if (stake != '' && oddsNumerator != '' && oddsDenominator != ''){  
+    if (stake.value !== ''  &&  oddsNumerator.value !== ''  &&  oddsDenominator.value !== ''){  
         
      
         document.getElementById('loading').style.display = 'none';
@@ -41,21 +41,28 @@ function calculateResult(){
         const secondCalculation = firstCalculation / oddsDenominator.value
         document.getElementById('returns').value = secondCalculation
         
-       
+         console.log('hello')
       
 
-    }else {console.log('hello')
+    }else { document.getElementById('loading').style.display = 'none';
+            document.getElementById('returns').style.display = 'block'; 
+            var errorheading = document.getElementById('error-heading')
+            errorheading.innerHTML = 'please fill all fields before calculation'
+            
+            setTimeout(removeError, 2000)
 
+            console.log('hello')
+    
 
     }
+
 }
 
-//function clearError(){
-//  document.querySelector('.error').removeTextNode()
-    
-//}
+   
+ function  removeError(){
+     var errorheading = document.getElementById('error-heading')
+     errorheading.innerHTML = ''
 
-   
-   
+  } 
 
  
